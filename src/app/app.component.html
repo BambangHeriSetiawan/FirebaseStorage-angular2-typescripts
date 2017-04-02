@@ -4,7 +4,7 @@
 <h2>Upload Files Sample</h2>  
 <div class="fileUpload btn btn-primary" *ngIf="isUploadBtn">  
 <span>Upload</span>  
-<input type="file" id="btnUpload" value="Upload" (change)="fileChange($event)" class="upload" />
+<input type="file" id="btnUpload" value="Upload" (change)="fileChange($event)" class="upload"  accept="image/*"/>
 <input id="imgurl" type="text"/>  
 </div>  
 
