@@ -27,7 +27,7 @@ if(filelist.length>0){
     let file : File = filelist[0];
     console.log(file.name);
     var storageRef = firebase.storage().ref();
-     var uploadTask = storageRef.child('images/' + file.name).put(file, metadata);
+     var uploadTask = storageRef.child('cards/' + file.name).put(file, metadata);
 // Listen for state changes, errors, and completion of the upload.
 uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
   function(snapshot) {
