@@ -6,11 +6,11 @@ import { AngularFireModule } from 'angularfire2';
 import { AppComponent } from './app.component';
 export const firebaseConfig = {
 apiKey: "AIzaSyBc0mNgKNFhP-flnnOT3wPw7Vvv-cMrgtg",
-    authDomain: "xxxxxxxxxxxxxxxx",
-    databaseURL: "xxxxxxxxxxxxxxxx",
-    projectId: "xxxxxxxxxxxxxxxx",
-    storageBucket: "xxxxxxxxxxxxxxxx.appspot.com",
-    messagingSenderId: "xxxxxxxxxxxxxxxx"
+    authDomain: "homesuvenir.firebaseapp.com",
+    databaseURL: "https://homesuvenir.firebaseio.com",
+    projectId: "homesuvenir",
+    storageBucket: "homesuvenir.appspot.com",
+    messagingSenderId: "940309053377"
 };
 
 @NgModule({

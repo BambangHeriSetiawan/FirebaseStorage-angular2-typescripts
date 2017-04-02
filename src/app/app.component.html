@@ -1,10 +1,19 @@
 
 <div class="column row"><h2> SAMPLE IMAGE UPLOAD AN RETRIVE | FIREBASE STORAGE</h2></div>
 
-<h2>Upload Files Sample</h2>  
+<h2>Upload Files Sample</h2>
 <div class="fileUpload btn btn-primary" *ngIf="isUploadBtn">  
 <span>Upload</span>  
 <input type="file" id="btnUpload" value="Upload" (change)="fileChange($event)" class="upload"  accept="image/*"/>
-<input id="imgurl" type="text"/>  
+<img  id="imgPreview"  alt="">
 </div>  
-
+<input type="text" id="name" ng-model="name"  #name placeholder="name"/>
+<input id="imgurl" type="text" #imageUrl/>  
+<button type="submit" id="btnSave" (click)="saveData(name.value,imageUrl.value)" >Save</button>
+<ul *ngFor="let item of items | async">
+    <li>{{item.nameData}}</li>
+    <li><img  src="{{item.UrlImage}}" id="img"  alt=""></li>
+    <li><img  src="{{item.img}}" id="img"  alt=""></li>
+    <button id="deletbtn" (click)="deletData(item.$key)">DELET</button>
+  
+</ul>

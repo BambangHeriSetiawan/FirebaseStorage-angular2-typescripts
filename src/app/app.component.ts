@@ -11,15 +11,28 @@ export class AppComponent {
   private isUploadBtn= true ;
   public TheFileContents:any;
    items: FirebaseListObservable<any[]>;
+  name :string;
+  imageUrl : string;
+
 constructor(
   public af:AngularFire,
   public el:ElementRef
 ){
   this.items = af.database.list('/items');
 }
-fileChange(event:any){
+saveData(name,imageUrl){
+this.items.push({
+  nameData :name,
+  img:imageUrl
+});
+}
+deletData(key:any){
+  this.items.remove(key);
+}
 
+fileChange(event:any){
 let filelist :FileList = event.target.files;
+ 
 if(filelist.length>0){
       var metadata = {
       contentType: 'image/jpeg'
@@ -63,10 +76,29 @@ uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
 }, function() {
   // Upload completed successfully, now we can get the download URL
   var downloadURL = uploadTask.snapshot.downloadURL;
+  var urlImage = downloadURL.toString();
+  var inputUtrlImage = <HTMLInputElement>document.getElementById('imgurl');
+  var imgPreview = <HTMLImageElement>document.getElementById('imgPreview');
+  imgPreview.src =urlImage;
+  inputUtrlImage.value = urlImage;
+
+  console.log(urlImage);
+   console.log(inputUtrlImage.value);
+
+   //var postKey = firebase.database().ref('items/').push().key;
+   //var inputName :any = <HTMLInputElement>document.getElementById('name')
+   //var inputValue :any = inputName.value;
+   //var update = {};
+   //var postData = {
+    // UrlImage  :urlImage,
+   // Name : inputValue
+  // }
+   //update['/items/'+ postKey] = postData;
+   //firebase.database().ref().update(update);
 
 });
   
 }
-window.location.reload();
+//window.location.reload();
 }
 }
